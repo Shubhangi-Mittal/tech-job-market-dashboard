@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "public": false,
   "buildCommand": "echo 'No build needed'",
   "installCommand": "npm install",
   "routes": [
     {
       "src": "/data/(.*)",
-      "dest": "data/$1"
+      "dest": "/data/$1"
     },
     {
       "src": "/(.*)",
