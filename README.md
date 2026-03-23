@@ -91,12 +91,3 @@ python run_pipeline.py --no-serve      # skip auto-open browser
     ├── skills_exploded.csv
     └── insights.json
 ```
-
-## Resume Talking Points
-
-- Built an **end-to-end analytics pipeline** processing 2,500+ job postings across 8 role categories
-- Engineered a **3-stage data pipeline**: extraction → cleaning (6 documented steps) → 12 statistical analyses
-- Designed a custom **skill normalization system** handling 40+ technology aliases for accurate demand measurement
-- Identified a **$80k salary gap** between FAANG+ and startup compensation for equivalent ML roles
-- Detected a **37pp decline** in remote work availability over 6 months — ahead of mainstream reporting
-- Built a **zero-dependency interactive dashboard** with live filtering across 5 dimensions, serving 9 chart types
