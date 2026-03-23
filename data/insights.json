@@ -1,0 +1,2231 @@
+{
+  "generated_at": "2026-03-22T19:50:32.628314",
+  "total_jobs_analyzed": 2487,
+  "insights": {
+    "role_growth": {
+      "title": "Role Growth Index (Last 30 Days vs Prior Period)",
+      "insight": "'Data Platform Engineer' shows the highest recent hiring surge at +35% vs baseline.",
+      "data": [
+        {
+          "role_category": "Data Platform Engineer",
+          "recent_share": 0.07,
+          "older_share": 0.05,
+          "growth_index": 35.03,
+          "total_jobs": 162
+        },
+        {
+          "role_category": "Machine Learning Engineer",
+          "recent_share": 0.14,
+          "older_share": 0.13,
+          "growth_index": 11.45,
+          "total_jobs": 335
+        },
+        {
+          "role_category": "Analytics Engineer",
+          "recent_share": 0.08,
+          "older_share": 0.07,
+          "growth_index": 9.43,
+          "total_jobs": 190
+        },
+        {
+          "role_category": "Data Scientist",
+          "recent_share": 0.18,
+          "older_share": 0.18,
+          "growth_index": 3.26,
+          "total_jobs": 445
+        },
+        {
+          "role_category": "Data Analyst",
+          "recent_share": 0.21,
+          "older_share": 0.22,
+          "growth_index": -6.64,
+          "total_jobs": 527
+        },
+        {
+          "role_category": "AI/LLM Engineer",
+          "recent_share": 0.08,
+          "older_share": 0.09,
+          "growth_index": -7.22,
+          "total_jobs": 211
+        },
+        {
+          "role_category": "Data Engineer",
+          "recent_share": 0.16,
+          "older_share": 0.18,
+          "growth_index": -7.25,
+          "total_jobs": 417
+        },
+        {
+          "role_category": "Business Intelligence Developer",
+          "recent_share": 0.08,
+          "older_share": 0.09,
+          "growth_index": -13.64,
+          "total_jobs": 200
+        }
+      ]
+    },
+    "skill_salary_premium": {
+      "title": "Top Skills by Salary Premium vs Market Median",
+      "insight": "Skills like 'Weaviate' and 'Pinecone' carry the highest salary premiums, averaging 72% above market.",
+      "data": [
+        {
+          "skill": "Weaviate",
+          "median_salary": 310000.0,
+          "job_count": 50,
+          "salary_premium_pct": 72.2
+        },
+        {
+          "skill": "Pinecone",
+          "median_salary": 310000.0,
+          "job_count": 49,
+          "salary_premium_pct": 72.2
+        },
+        {
+          "skill": "Openai Api",
+          "median_salary": 300000.0,
+          "job_count": 152,
+          "salary_premium_pct": 66.7
+        },
+        {
+          "skill": "Vector Databases",
+          "median_salary": 297500.0,
+          "job_count": 154,
+          "salary_premium_pct": 65.3
+        },
+        {
+          "skill": "RAG",
+          "median_salary": 295000.0,
+          "job_count": 154,
+          "salary_premium_pct": 63.9
+        },
+        {
+          "skill": "Hugging Face",
+          "median_salary": 295000.0,
+          "job_count": 51,
+          "salary_premium_pct": 63.9
+        },
+        {
+          "skill": "LangChain",
+          "median_salary": 290000.0,
+          "job_count": 155,
+          "salary_premium_pct": 61.1
+        },
+        {
+          "skill": "Fastapi",
+          "median_salary": 290000.0,
+          "job_count": 61,
+          "salary_premium_pct": 61.1
+        },
+        {
+          "skill": "Gcp Vertex Ai",
+          "median_salary": 270000.0,
+          "job_count": 115,
+          "salary_premium_pct": 50.0
+        },
+        {
+          "skill": "PyTorch",
+          "median_salary": 270000.0,
+          "job_count": 389,
+          "salary_premium_pct": 50.0
+        },
+        {
+          "skill": "Azure Ml",
+          "median_salary": 255000.0,
+          "job_count": 107,
+          "salary_premium_pct": 41.7
+        },
+        {
+          "skill": "Tensorflow",
+          "median_salary": 255000.0,
+          "job_count": 242,
+          "salary_premium_pct": 41.7
+        },
+        {
+          "skill": "Mlflow",
+          "median_salary": 255000.0,
+          "job_count": 263,
+          "salary_premium_pct": 41.7
+        },
+        {
+          "skill": "Ray",
+          "median_salary": 250000.0,
+          "job_count": 99,
+          "salary_premium_pct": 38.9
+        },
+        {
+          "skill": "Weights & Biases",
+          "median_salary": 242500.0,
+          "job_count": 108,
+          "salary_premium_pct": 34.7
+        },
+        {
+          "skill": "Aws Sagemaker",
+          "median_salary": 242500.0,
+          "job_count": 114,
+          "salary_premium_pct": 34.7
+        },
+        {
+          "skill": "Kubernetes",
+          "median_salary": 215000.0,
+          "job_count": 491,
+          "salary_premium_pct": 19.4
+        },
+        {
+          "skill": "Prometheus",
+          "median_salary": 210000.0,
+          "job_count": 46,
+          "salary_premium_pct": 16.7
+        },
+        {
+          "skill": "Scikit-Learn",
+          "median_salary": 210000.0,
+          "job_count": 558,
+          "salary_premium_pct": 16.7
+        },
+        {
+          "skill": "Docker",
+          "median_salary": 210000.0,
+          "job_count": 466,
+          "salary_premium_pct": 16.7
+        }
+      ],
+      "market_median": 180000
+    },
+    "remote_trend": {
+      "title": "Remote Work Share Over Time (%)",
+      "insight": "Remote work availability has decreased by 21.3pp over the observed period, from 66.7% to 45.4%.",
+      "data": [
+        {
+          "month": "2025-09",
+          "Hybrid": 33.3,
+          "On-site": 0.0,
+          "Remote": 66.7
+        },
+        {
+          "month": "2025-10",
+          "Hybrid": 33.3,
+          "On-site": 27.8,
+          "Remote": 38.9
+        },
+        {
+          "month": "2025-11",
+          "Hybrid": 41.5,
+          "On-site": 9.8,
+          "Remote": 48.8
+        },
+        {
+          "month": "2025-12",
+          "Hybrid": 45.9,
+          "On-site": 13.1,
+          "Remote": 41.0
+        },
+        {
+          "month": "2026-01",
+          "Hybrid": 41.9,
+          "On-site": 14.7,
+          "Remote": 43.4
+        },
+        {
+          "month": "2026-02",
+          "Hybrid": 40.4,
+          "On-site": 14.6,
+          "Remote": 45.0
+        },
+        {
+          "month": "2026-03",
+          "Hybrid": 38.9,
+          "On-site": 15.7,
+          "Remote": 45.4
+        }
+      ]
+    },
+    "salary_by_tier": {
+      "title": "Median Salary by Company Tier",
+      "insight": "'FAANG+' companies offer the highest median compensation at $225,000, vs $145,000 at 'Startup'.",
+      "data": [
+        {
+          "company_tier": "Enterprise",
+          "role_category": "AI/LLM Engineer",
+          "median_salary": 280000.0
+        },
+        {
+          "company_tier": "Enterprise",
+          "role_category": "Analytics Engineer",
+          "median_salary": 140000.0
+        },
+        {
+          "company_tier": "Enterprise",
+          "role_category": "Business Intelligence Developer",
+          "median_salary": 120000.0
+        },
+        {
+          "company_tier": "Enterprise",
+          "role_category": "Data Analyst",
+          "median_salary": 105000.0
+        },
+        {
+          "company_tier": "Enterprise",
+          "role_category": "Data Engineer",
+          "median_salary": 155000.0
+        },
+        {
+          "company_tier": "Enterprise",
+          "role_category": "Data Platform Engineer",
+          "median_salary": 190000.0
+        },
+        {
+          "company_tier": "Enterprise",
+          "role_category": "Data Scientist",
+          "median_salary": 175000.0
+        },
+        {
+          "company_tier": "Enterprise",
+          "role_category": "Machine Learning Engineer",
+          "median_salary": 225000.0
+        },
+        {
+          "company_tier": "FAANG+",
+          "role_category": "AI/LLM Engineer",
+          "median_salary": 330000.0
+        },
+        {
+          "company_tier": "FAANG+",
+          "role_category": "Analytics Engineer",
+          "median_salary": 240000.0
+        },
+        {
+          "company_tier": "FAANG+",
+          "role_category": "Business Intelligence Developer",
+          "median_salary": 190000.0
+        },
+        {
+          "company_tier": "FAANG+",
+          "role_category": "Data Analyst",
+          "median_salary": 155000.0
+        },
+        {
+          "company_tier": "FAANG+",
+          "role_category": "Data Engineer",
+          "median_salary": 235000.0
+        },
+        {
+          "company_tier": "FAANG+",
+          "role_category": "Data Platform Engineer",
+          "median_salary": 255000.0
+        },
+        {
+          "company_tier": "FAANG+",
+          "role_category": "Data Scientist",
+          "median_salary": 225000.0
+        },
+        {
+          "company_tier": "FAANG+",
+          "role_category": "Machine Learning Engineer",
+          "median_salary": 290000.0
+        },
+        {
+          "company_tier": "Mid-market",
+          "role_category": "AI/LLM Engineer",
+          "median_salary": 302500.0
+        },
+        {
+          "company_tier": "Mid-market",
+          "role_category": "Analytics Engineer",
+          "median_salary": 135000.0
+        },
+        {
+          "company_tier": "Mid-market",
+          "role_category": "Business Intelligence Developer",
+          "median_salary": 135000.0
+        },
+        {
+          "company_tier": "Mid-market",
+          "role_category": "Data Analyst",
+          "median_salary": 115000.0
+        },
+        {
+          "company_tier": "Mid-market",
+          "role_category": "Data Engineer",
+          "median_salary": 185000.0
+        },
+        {
+          "company_tier": "Mid-market",
+          "role_category": "Data Platform Engineer",
+          "median_salary": 200000.0
+        },
+        {
+          "company_tier": "Mid-market",
+          "role_category": "Data Scientist",
+          "median_salary": 180000.0
+        },
+        {
+          "company_tier": "Mid-market",
+          "role_category": "Machine Learning Engineer",
+          "median_salary": 265000.0
+        },
+        {
+          "company_tier": "Scale-up",
+          "role_category": "AI/LLM Engineer",
+          "median_salary": 310000.0
+        },
+        {
+          "company_tier": "Scale-up",
+          "role_category": "Analytics Engineer",
+          "median_salary": 175000.0
+        },
+        {
+          "company_tier": "Scale-up",
+          "role_category": "Business Intelligence Developer",
+          "median_salary": 165000.0
+        },
+        {
+          "company_tier": "Scale-up",
+          "role_category": "Data Analyst",
+          "median_salary": 137500.0
+        },
+        {
+          "company_tier": "Scale-up",
+          "role_category": "Data Engineer",
+          "median_salary": 200000.0
+        },
+        {
+          "company_tier": "Scale-up",
+          "role_category": "Data Platform Engineer",
+          "median_salary": 237500.0
+        },
+        {
+          "company_tier": "Scale-up",
+          "role_category": "Data Scientist",
+          "median_salary": 217500.0
+        },
+        {
+          "company_tier": "Scale-up",
+          "role_category": "Machine Learning Engineer",
+          "median_salary": 285000.0
+        },
+        {
+          "company_tier": "Startup",
+          "role_category": "AI/LLM Engineer",
+          "median_salary": 247500.0
+        },
+        {
+          "company_tier": "Startup",
+          "role_category": "Analytics Engineer",
+          "median_salary": 142500.0
+        },
+        {
+          "company_tier": "Startup",
+          "role_category": "Business Intelligence Developer",
+          "median_salary": 110000.0
+        },
+        {
+          "company_tier": "Startup",
+          "role_category": "Data Analyst",
+          "median_salary": 100000.0
+        },
+        {
+          "company_tier": "Startup",
+          "role_category": "Data Engineer",
+          "median_salary": 137500.0
+        },
+        {
+          "company_tier": "Startup",
+          "role_category": "Data Platform Engineer",
+          "median_salary": 155000.0
+        },
+        {
+          "company_tier": "Startup",
+          "role_category": "Data Scientist",
+          "median_salary": 160000.0
+        },
+        {
+          "company_tier": "Startup",
+          "role_category": "Machine Learning Engineer",
+          "median_salary": 200000.0
+        }
+      ],
+      "overall_by_tier": [
+        {
+          "company_tier": "FAANG+",
+          "median_salary": 225000.0
+        },
+        {
+          "company_tier": "Scale-up",
+          "median_salary": 195000.0
+        },
+        {
+          "company_tier": "Mid-market",
+          "median_salary": 175000.0
+        },
+        {
+          "company_tier": "Enterprise",
+          "median_salary": 162500.0
+        },
+        {
+          "company_tier": "Startup",
+          "median_salary": 145000.0
+        }
+      ]
+    },
+    "top_skills": {
+      "title": "Top 25 In-Demand Skills (All Roles)",
+      "insight": "'Python', 'Sql', and 'Git' appear in the most job postings, confirming their status as baseline requirements.",
+      "data": [
+        {
+          "skill": "Python",
+          "job_count": 1838,
+          "pct_of_jobs": 73.9
+        },
+        {
+          "skill": "Sql",
+          "job_count": 1434,
+          "pct_of_jobs": 57.7
+        },
+        {
+          "skill": "Git",
+          "job_count": 869,
+          "pct_of_jobs": 34.9
+        },
+        {
+          "skill": "Looker",
+          "job_count": 691,
+          "pct_of_jobs": 27.8
+        },
+        {
+          "skill": "Dbt",
+          "job_count": 686,
+          "pct_of_jobs": 27.6
+        },
+        {
+          "skill": "Tableau",
+          "job_count": 614,
+          "pct_of_jobs": 24.7
+        },
+        {
+          "skill": "Snowflake",
+          "job_count": 607,
+          "pct_of_jobs": 24.4
+        },
+        {
+          "skill": "Scikit-Learn",
+          "job_count": 561,
+          "pct_of_jobs": 22.6
+        },
+        {
+          "skill": "Power Bi",
+          "job_count": 550,
+          "pct_of_jobs": 22.1
+        },
+        {
+          "skill": "Airflow",
+          "job_count": 530,
+          "pct_of_jobs": 21.3
+        },
+        {
+          "skill": "Kubernetes",
+          "job_count": 494,
+          "pct_of_jobs": 19.9
+        },
+        {
+          "skill": "Excel",
+          "job_count": 490,
+          "pct_of_jobs": 19.7
+        },
+        {
+          "skill": "Databricks",
+          "job_count": 475,
+          "pct_of_jobs": 19.1
+        },
+        {
+          "skill": "Docker",
+          "job_count": 469,
+          "pct_of_jobs": 18.9
+        },
+        {
+          "skill": "Spark",
+          "job_count": 459,
+          "pct_of_jobs": 18.5
+        },
+        {
+          "skill": "Kafka",
+          "job_count": 440,
+          "pct_of_jobs": 17.7
+        },
+        {
+          "skill": "PyTorch",
+          "job_count": 395,
+          "pct_of_jobs": 15.9
+        },
+        {
+          "skill": "Aws",
+          "job_count": 380,
+          "pct_of_jobs": 15.3
+        },
+        {
+          "skill": "GCP",
+          "job_count": 365,
+          "pct_of_jobs": 14.7
+        },
+        {
+          "skill": "Bigquery",
+          "job_count": 362,
+          "pct_of_jobs": 14.6
+        },
+        {
+          "skill": "Redshift",
+          "job_count": 358,
+          "pct_of_jobs": 14.4
+        },
+        {
+          "skill": "B Testing",
+          "job_count": 339,
+          "pct_of_jobs": 13.6
+        },
+        {
+          "skill": "Statistics",
+          "job_count": 330,
+          "pct_of_jobs": 13.3
+        },
+        {
+          "skill": "Data Modeling",
+          "job_count": 306,
+          "pct_of_jobs": 12.3
+        },
+        {
+          "skill": "Mlflow",
+          "job_count": 265,
+          "pct_of_jobs": 10.7
+        }
+      ]
+    },
+    "skills_by_role": {
+      "title": "Top Skills by Role Category",
+      "insight": "Each role has a distinct skill fingerprint \u2014 LLM skills dominate AI Engineer roles while SQL/dbt lead Analytics Engineering.",
+      "data": {
+        "Data Scientist": [
+          {
+            "skill": "Python",
+            "count": 342
+          },
+          {
+            "skill": "B Testing",
+            "count": 339
+          },
+          {
+            "skill": "Statistics",
+            "count": 330
+          },
+          {
+            "skill": "Scikit-Learn",
+            "count": 318
+          },
+          {
+            "skill": "Sql",
+            "count": 313
+          },
+          {
+            "skill": "Jupyter",
+            "count": 161
+          },
+          {
+            "skill": "Docker",
+            "count": 147
+          },
+          {
+            "skill": "Snowflake",
+            "count": 141
+          }
+        ],
+        "Data Engineer": [
+          {
+            "skill": "Spark",
+            "count": 335
+          },
+          {
+            "skill": "Dbt",
+            "count": 324
+          },
+          {
+            "skill": "Airflow",
+            "count": 320
+          },
+          {
+            "skill": "Kafka",
+            "count": 314
+          },
+          {
+            "skill": "Python",
+            "count": 314
+          },
+          {
+            "skill": "Sql",
+            "count": 310
+          },
+          {
+            "skill": "Databricks",
+            "count": 132
+          },
+          {
+            "skill": "Kubernetes",
+            "count": 126
+          }
+        ],
+        "AI/LLM Engineer": [
+          {
+            "skill": "Python",
+            "count": 160
+          },
+          {
+            "skill": "Vector Databases",
+            "count": 160
+          },
+          {
+            "skill": "LangChain",
+            "count": 159
+          },
+          {
+            "skill": "Openai Api",
+            "count": 157
+          },
+          {
+            "skill": "RAG",
+            "count": 157
+          },
+          {
+            "skill": "PyTorch",
+            "count": 148
+          },
+          {
+            "skill": "GCP",
+            "count": 66
+          },
+          {
+            "skill": "Fastapi",
+            "count": 63
+          }
+        ],
+        "Data Platform Engineer": [
+          {
+            "skill": "Kafka",
+            "count": 126
+          },
+          {
+            "skill": "Sql",
+            "count": 125
+          },
+          {
+            "skill": "Spark",
+            "count": 124
+          },
+          {
+            "skill": "Kubernetes",
+            "count": 123
+          },
+          {
+            "skill": "Python",
+            "count": 122
+          },
+          {
+            "skill": "Terraform",
+            "count": 122
+          },
+          {
+            "skill": "Aws",
+            "count": 74
+          },
+          {
+            "skill": "Docker",
+            "count": 52
+          }
+        ],
+        "Data Analyst": [
+          {
+            "skill": "Python",
+            "count": 416
+          },
+          {
+            "skill": "Excel",
+            "count": 399
+          },
+          {
+            "skill": "Power Bi",
+            "count": 394
+          },
+          {
+            "skill": "Tableau",
+            "count": 392
+          },
+          {
+            "skill": "Looker",
+            "count": 384
+          },
+          {
+            "skill": "Sql",
+            "count": 376
+          },
+          {
+            "skill": "Google Sheets",
+            "count": 230
+          },
+          {
+            "skill": "Git",
+            "count": 226
+          }
+        ],
+        "Machine Learning Engineer": [
+          {
+            "skill": "Mlflow",
+            "count": 265
+          },
+          {
+            "skill": "Python",
+            "count": 255
+          },
+          {
+            "skill": "PyTorch",
+            "count": 247
+          },
+          {
+            "skill": "Kubernetes",
+            "count": 245
+          },
+          {
+            "skill": "Tensorflow",
+            "count": 244
+          },
+          {
+            "skill": "Scikit-Learn",
+            "count": 243
+          },
+          {
+            "skill": "Gcp Vertex Ai",
+            "count": 116
+          },
+          {
+            "skill": "Aws Sagemaker",
+            "count": 115
+          }
+        ],
+        "Analytics Engineer": [
+          {
+            "skill": "Sql",
+            "count": 159
+          },
+          {
+            "skill": "Looker",
+            "count": 154
+          },
+          {
+            "skill": "Data Modeling",
+            "count": 152
+          },
+          {
+            "skill": "Python",
+            "count": 149
+          },
+          {
+            "skill": "Dbt",
+            "count": 148
+          },
+          {
+            "skill": "Airflow",
+            "count": 74
+          },
+          {
+            "skill": "Git",
+            "count": 70
+          },
+          {
+            "skill": "Snowflake",
+            "count": 69
+          }
+        ],
+        "Business Intelligence Developer": [
+          {
+            "skill": "Tableau",
+            "count": 158
+          },
+          {
+            "skill": "Power Bi",
+            "count": 156
+          },
+          {
+            "skill": "Data Modeling",
+            "count": 154
+          },
+          {
+            "skill": "Looker",
+            "count": 153
+          },
+          {
+            "skill": "Dax",
+            "count": 151
+          },
+          {
+            "skill": "Sql",
+            "count": 151
+          },
+          {
+            "skill": "Git",
+            "count": 109
+          },
+          {
+            "skill": "Excel",
+            "count": 91
+          }
+        ]
+      }
+    },
+    "salary_seniority": {
+      "title": "Salary Distribution by Seniority Level",
+      "insight": "Compensation scales 2.7x from Entry Level ($115,000) to Principal ($310,000).",
+      "data": [
+        {
+          "seniority": "Entry Level",
+          "median": 115000.0,
+          "p25": 85000.0,
+          "p75": 155000.0,
+          "count": 485
+        },
+        {
+          "seniority": "Mid Level",
+          "median": 160000.0,
+          "p25": 120000.0,
+          "p75": 212500.0,
+          "count": 899
+        },
+        {
+          "seniority": "Senior",
+          "median": 220000.0,
+          "p25": 168750.0,
+          "p75": 290000.0,
+          "count": 772
+        },
+        {
+          "seniority": "Staff/Lead",
+          "median": 255000.0,
+          "p25": 201250.0,
+          "p75": 320000.0,
+          "count": 206
+        },
+        {
+          "seniority": "Principal",
+          "median": 310000.0,
+          "p25": 250000.0,
+          "p75": 382500.0,
+          "count": 115
+        }
+      ]
+    },
+    "remote_salary_gap": {
+      "title": "Remote vs On-site Salary Gap by Role",
+      "insight": "Remote roles carry a 1.4% salary penalty vs on-site ($177,500 vs $180,000 median).",
+      "data": [
+        {
+          "remote_type": "Hybrid",
+          "role_category": "AI/LLM Engineer",
+          "median_salary": 300000.0
+        },
+        {
+          "remote_type": "Hybrid",
+          "role_category": "Analytics Engineer",
+          "median_salary": 170000.0
+        },
+        {
+          "remote_type": "Hybrid",
+          "role_category": "Business Intelligence Developer",
+          "median_salary": 155000.0
+        },
+        {
+          "remote_type": "Hybrid",
+          "role_category": "Data Analyst",
+          "median_salary": 115000.0
+        },
+        {
+          "remote_type": "Hybrid",
+          "role_category": "Data Engineer",
+          "median_salary": 180000.0
+        },
+        {
+          "remote_type": "Hybrid",
+          "role_category": "Data Platform Engineer",
+          "median_salary": 215000.0
+        },
+        {
+          "remote_type": "Hybrid",
+          "role_category": "Data Scientist",
+          "median_salary": 190000.0
+        },
+        {
+          "remote_type": "Hybrid",
+          "role_category": "Machine Learning Engineer",
+          "median_salary": 270000.0
+        },
+        {
+          "remote_type": "On-site",
+          "role_category": "AI/LLM Engineer",
+          "median_salary": 245000.0
+        },
+        {
+          "remote_type": "On-site",
+          "role_category": "Analytics Engineer",
+          "median_salary": 165000.0
+        },
+        {
+          "remote_type": "On-site",
+          "role_category": "Business Intelligence Developer",
+          "median_salary": 122500.0
+        },
+        {
+          "remote_type": "On-site",
+          "role_category": "Data Analyst",
+          "median_salary": 130000.0
+        },
+        {
+          "remote_type": "On-site",
+          "role_category": "Data Engineer",
+          "median_salary": 180000.0
+        },
+        {
+          "remote_type": "On-site",
+          "role_category": "Data Platform Engineer",
+          "median_salary": 245000.0
+        },
+        {
+          "remote_type": "On-site",
+          "role_category": "Data Scientist",
+          "median_salary": 195000.0
+        },
+        {
+          "remote_type": "On-site",
+          "role_category": "Machine Learning Engineer",
+          "median_salary": 280000.0
+        },
+        {
+          "remote_type": "Remote",
+          "role_category": "AI/LLM Engineer",
+          "median_salary": 285000.0
+        },
+        {
+          "remote_type": "Remote",
+          "role_category": "Analytics Engineer",
+          "median_salary": 155000.0
+        },
+        {
+          "remote_type": "Remote",
+          "role_category": "Business Intelligence Developer",
+          "median_salary": 135000.0
+        },
+        {
+          "remote_type": "Remote",
+          "role_category": "Data Analyst",
+          "median_salary": 125000.0
+        },
+        {
+          "remote_type": "Remote",
+          "role_category": "Data Engineer",
+          "median_salary": 180000.0
+        },
+        {
+          "remote_type": "Remote",
+          "role_category": "Data Platform Engineer",
+          "median_salary": 177500.0
+        },
+        {
+          "remote_type": "Remote",
+          "role_category": "Data Scientist",
+          "median_salary": 185000.0
+        },
+        {
+          "remote_type": "Remote",
+          "role_category": "Machine Learning Engineer",
+          "median_salary": 237500.0
+        }
+      ],
+      "overall": [
+        {
+          "remote_type": "Hybrid",
+          "salary_midpoint": 177500.0
+        },
+        {
+          "remote_type": "On-site",
+          "salary_midpoint": 180000.0
+        },
+        {
+          "remote_type": "Remote",
+          "salary_midpoint": 177500.0
+        }
+      ]
+    },
+    "salary_range_width": {
+      "title": "Salary Range Width by Role (P10\u2013P90)",
+      "insight": "'Machine Learning Engineer' has the widest salary range ($260,000 P10\u2192P90 spread), indicating high variance in comp negotiation.",
+      "data": [
+        {
+          "role_category": "Machine Learning Engineer",
+          "p10": 155000.0,
+          "p90": 415000.0,
+          "median": 255000.0,
+          "count": 332,
+          "range_width": 260000.0
+        },
+        {
+          "role_category": "AI/LLM Engineer",
+          "p10": 180000.0,
+          "p90": 431000.0,
+          "median": 290000.0,
+          "count": 205,
+          "range_width": 251000.0
+        },
+        {
+          "role_category": "Data Platform Engineer",
+          "p10": 120000.0,
+          "p90": 335000.0,
+          "median": 200000.0,
+          "count": 162,
+          "range_width": 215000.0
+        },
+        {
+          "role_category": "Data Scientist",
+          "p10": 110000.0,
+          "p90": 310000.0,
+          "median": 190000.0,
+          "count": 444,
+          "range_width": 200000.0
+        },
+        {
+          "role_category": "Analytics Engineer",
+          "p10": 100000.0,
+          "p90": 290500.0,
+          "median": 160000.0,
+          "count": 190,
+          "range_width": 190500.0
+        },
+        {
+          "role_category": "Data Engineer",
+          "p10": 110000.0,
+          "p90": 295000.0,
+          "median": 180000.0,
+          "count": 417,
+          "range_width": 185000.0
+        },
+        {
+          "role_category": "Business Intelligence Developer",
+          "p10": 85000.0,
+          "p90": 235500.0,
+          "median": 140000.0,
+          "count": 200,
+          "range_width": 150500.0
+        },
+        {
+          "role_category": "Data Analyst",
+          "p10": 75000.0,
+          "p90": 215000.0,
+          "median": 120000.0,
+          "count": 527,
+          "range_width": 140000.0
+        }
+      ]
+    },
+    "llm_cooccurrence": {
+      "title": "Skills Most Paired with AI/LLM Technologies",
+      "insight": "'Python' is the skill most commonly paired with LLM/AI requirements, appearing in 76% of AI-focused job postings.",
+      "data": [
+        {
+          "skill": "Python",
+          "co_occurrence_count": 347,
+          "pct_of_llm_jobs": 76.1
+        },
+        {
+          "skill": "Mlflow",
+          "co_occurrence_count": 203,
+          "pct_of_llm_jobs": 44.5
+        },
+        {
+          "skill": "Scikit-Learn",
+          "co_occurrence_count": 181,
+          "pct_of_llm_jobs": 39.7
+        },
+        {
+          "skill": "Tensorflow",
+          "co_occurrence_count": 180,
+          "pct_of_llm_jobs": 39.5
+        },
+        {
+          "skill": "Kubernetes",
+          "co_occurrence_count": 179,
+          "pct_of_llm_jobs": 39.3
+        },
+        {
+          "skill": "Vector Databases",
+          "co_occurrence_count": 158,
+          "pct_of_llm_jobs": 34.6
+        },
+        {
+          "skill": "Openai Api",
+          "co_occurrence_count": 155,
+          "pct_of_llm_jobs": 34.0
+        },
+        {
+          "skill": "Git",
+          "co_occurrence_count": 144,
+          "pct_of_llm_jobs": 31.6
+        },
+        {
+          "skill": "Docker",
+          "co_occurrence_count": 128,
+          "pct_of_llm_jobs": 28.1
+        },
+        {
+          "skill": "Gcp Vertex Ai",
+          "co_occurrence_count": 83,
+          "pct_of_llm_jobs": 18.2
+        },
+        {
+          "skill": "Azure Ml",
+          "co_occurrence_count": 83,
+          "pct_of_llm_jobs": 18.2
+        },
+        {
+          "skill": "Aws Sagemaker",
+          "co_occurrence_count": 82,
+          "pct_of_llm_jobs": 18.0
+        },
+        {
+          "skill": "Weights & Biases",
+          "co_occurrence_count": 82,
+          "pct_of_llm_jobs": 18.0
+        },
+        {
+          "skill": "Ray",
+          "co_occurrence_count": 71,
+          "pct_of_llm_jobs": 15.6
+        },
+        {
+          "skill": "Databricks",
+          "co_occurrence_count": 70,
+          "pct_of_llm_jobs": 15.4
+        }
+      ]
+    },
+    "hiring_velocity": {
+      "title": "Weekly Hiring Velocity by Role",
+      "insight": "Overall hiring is accelerating \u2014 avg WoW change of +21.6% over the last 4 weeks.",
+      "data": [
+        {
+          "week_start": "2025-09-22",
+          "role_category": "AI/LLM Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-09-22",
+          "role_category": "Analytics Engineer",
+          "postings": 2
+        },
+        {
+          "week_start": "2025-09-22",
+          "role_category": "Data Analyst",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-09-22",
+          "role_category": "Data Engineer",
+          "postings": 2
+        },
+        {
+          "week_start": "2025-09-29",
+          "role_category": "Data Analyst",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-09-29",
+          "role_category": "Data Scientist",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-10-06",
+          "role_category": "AI/LLM Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-10-13",
+          "role_category": "Analytics Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-10-13",
+          "role_category": "Data Platform Engineer",
+          "postings": 2
+        },
+        {
+          "week_start": "2025-10-20",
+          "role_category": "Business Intelligence Developer",
+          "postings": 2
+        },
+        {
+          "week_start": "2025-10-20",
+          "role_category": "Data Engineer",
+          "postings": 4
+        },
+        {
+          "week_start": "2025-10-20",
+          "role_category": "Machine Learning Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-10-27",
+          "role_category": "AI/LLM Engineer",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-10-27",
+          "role_category": "Data Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-10-27",
+          "role_category": "Data Platform Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-10-27",
+          "role_category": "Data Scientist",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-03",
+          "role_category": "AI/LLM Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-03",
+          "role_category": "Analytics Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-03",
+          "role_category": "Data Analyst",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-03",
+          "role_category": "Data Engineer",
+          "postings": 2
+        },
+        {
+          "week_start": "2025-11-03",
+          "role_category": "Data Platform Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-03",
+          "role_category": "Data Scientist",
+          "postings": 2
+        },
+        {
+          "week_start": "2025-11-10",
+          "role_category": "Analytics Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-10",
+          "role_category": "Business Intelligence Developer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-10",
+          "role_category": "Data Analyst",
+          "postings": 6
+        },
+        {
+          "week_start": "2025-11-10",
+          "role_category": "Data Engineer",
+          "postings": 2
+        },
+        {
+          "week_start": "2025-11-10",
+          "role_category": "Data Scientist",
+          "postings": 2
+        },
+        {
+          "week_start": "2025-11-17",
+          "role_category": "Data Analyst",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-17",
+          "role_category": "Data Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-17",
+          "role_category": "Machine Learning Engineer",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-11-24",
+          "role_category": "AI/LLM Engineer",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-11-24",
+          "role_category": "Analytics Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-24",
+          "role_category": "Business Intelligence Developer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-24",
+          "role_category": "Data Analyst",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-24",
+          "role_category": "Data Engineer",
+          "postings": 7
+        },
+        {
+          "week_start": "2025-11-24",
+          "role_category": "Data Scientist",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-11-24",
+          "role_category": "Machine Learning Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-12-01",
+          "role_category": "AI/LLM Engineer",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-12-01",
+          "role_category": "Analytics Engineer",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-12-01",
+          "role_category": "Business Intelligence Developer",
+          "postings": 4
+        },
+        {
+          "week_start": "2025-12-01",
+          "role_category": "Data Analyst",
+          "postings": 8
+        },
+        {
+          "week_start": "2025-12-01",
+          "role_category": "Data Engineer",
+          "postings": 4
+        },
+        {
+          "week_start": "2025-12-01",
+          "role_category": "Data Platform Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-12-01",
+          "role_category": "Data Scientist",
+          "postings": 4
+        },
+        {
+          "week_start": "2025-12-01",
+          "role_category": "Machine Learning Engineer",
+          "postings": 5
+        },
+        {
+          "week_start": "2025-12-08",
+          "role_category": "Analytics Engineer",
+          "postings": 2
+        },
+        {
+          "week_start": "2025-12-08",
+          "role_category": "Business Intelligence Developer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-12-08",
+          "role_category": "Data Analyst",
+          "postings": 5
+        },
+        {
+          "week_start": "2025-12-08",
+          "role_category": "Data Engineer",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-12-08",
+          "role_category": "Data Platform Engineer",
+          "postings": 2
+        },
+        {
+          "week_start": "2025-12-08",
+          "role_category": "Data Scientist",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-12-08",
+          "role_category": "Machine Learning Engineer",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-12-15",
+          "role_category": "AI/LLM Engineer",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-12-15",
+          "role_category": "Analytics Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-12-15",
+          "role_category": "Business Intelligence Developer",
+          "postings": 5
+        },
+        {
+          "week_start": "2025-12-15",
+          "role_category": "Data Analyst",
+          "postings": 7
+        },
+        {
+          "week_start": "2025-12-15",
+          "role_category": "Data Engineer",
+          "postings": 2
+        },
+        {
+          "week_start": "2025-12-15",
+          "role_category": "Data Platform Engineer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-12-15",
+          "role_category": "Data Scientist",
+          "postings": 4
+        },
+        {
+          "week_start": "2025-12-15",
+          "role_category": "Machine Learning Engineer",
+          "postings": 4
+        },
+        {
+          "week_start": "2025-12-22",
+          "role_category": "AI/LLM Engineer",
+          "postings": 4
+        },
+        {
+          "week_start": "2025-12-22",
+          "role_category": "Analytics Engineer",
+          "postings": 2
+        },
+        {
+          "week_start": "2025-12-22",
+          "role_category": "Business Intelligence Developer",
+          "postings": 1
+        },
+        {
+          "week_start": "2025-12-22",
+          "role_category": "Data Analyst",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-12-22",
+          "role_category": "Data Engineer",
+          "postings": 5
+        },
+        {
+          "week_start": "2025-12-22",
+          "role_category": "Data Platform Engineer",
+          "postings": 4
+        },
+        {
+          "week_start": "2025-12-22",
+          "role_category": "Data Scientist",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-12-22",
+          "role_category": "Machine Learning Engineer",
+          "postings": 5
+        },
+        {
+          "week_start": "2025-12-29",
+          "role_category": "AI/LLM Engineer",
+          "postings": 4
+        },
+        {
+          "week_start": "2025-12-29",
+          "role_category": "Analytics Engineer",
+          "postings": 4
+        },
+        {
+          "week_start": "2025-12-29",
+          "role_category": "Business Intelligence Developer",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-12-29",
+          "role_category": "Data Analyst",
+          "postings": 6
+        },
+        {
+          "week_start": "2025-12-29",
+          "role_category": "Data Engineer",
+          "postings": 3
+        },
+        {
+          "week_start": "2025-12-29",
+          "role_category": "Data Platform Engineer",
+          "postings": 5
+        },
+        {
+          "week_start": "2025-12-29",
+          "role_category": "Data Scientist",
+          "postings": 8
+        },
+        {
+          "week_start": "2025-12-29",
+          "role_category": "Machine Learning Engineer",
+          "postings": 8
+        },
+        {
+          "week_start": "2026-01-05",
+          "role_category": "AI/LLM Engineer",
+          "postings": 5
+        },
+        {
+          "week_start": "2026-01-05",
+          "role_category": "Analytics Engineer",
+          "postings": 10
+        },
+        {
+          "week_start": "2026-01-05",
+          "role_category": "Business Intelligence Developer",
+          "postings": 2
+        },
+        {
+          "week_start": "2026-01-05",
+          "role_category": "Data Analyst",
+          "postings": 13
+        },
+        {
+          "week_start": "2026-01-05",
+          "role_category": "Data Engineer",
+          "postings": 8
+        },
+        {
+          "week_start": "2026-01-05",
+          "role_category": "Data Platform Engineer",
+          "postings": 2
+        },
+        {
+          "week_start": "2026-01-05",
+          "role_category": "Data Scientist",
+          "postings": 10
+        },
+        {
+          "week_start": "2026-01-05",
+          "role_category": "Machine Learning Engineer",
+          "postings": 10
+        },
+        {
+          "week_start": "2026-01-12",
+          "role_category": "AI/LLM Engineer",
+          "postings": 10
+        },
+        {
+          "week_start": "2026-01-12",
+          "role_category": "Analytics Engineer",
+          "postings": 6
+        },
+        {
+          "week_start": "2026-01-12",
+          "role_category": "Business Intelligence Developer",
+          "postings": 7
+        },
+        {
+          "week_start": "2026-01-12",
+          "role_category": "Data Analyst",
+          "postings": 18
+        },
+        {
+          "week_start": "2026-01-12",
+          "role_category": "Data Engineer",
+          "postings": 16
+        },
+        {
+          "week_start": "2026-01-12",
+          "role_category": "Data Platform Engineer",
+          "postings": 4
+        },
+        {
+          "week_start": "2026-01-12",
+          "role_category": "Data Scientist",
+          "postings": 10
+        },
+        {
+          "week_start": "2026-01-12",
+          "role_category": "Machine Learning Engineer",
+          "postings": 6
+        },
+        {
+          "week_start": "2026-01-19",
+          "role_category": "AI/LLM Engineer",
+          "postings": 6
+        },
+        {
+          "week_start": "2026-01-19",
+          "role_category": "Analytics Engineer",
+          "postings": 8
+        },
+        {
+          "week_start": "2026-01-19",
+          "role_category": "Business Intelligence Developer",
+          "postings": 9
+        },
+        {
+          "week_start": "2026-01-19",
+          "role_category": "Data Analyst",
+          "postings": 22
+        },
+        {
+          "week_start": "2026-01-19",
+          "role_category": "Data Engineer",
+          "postings": 14
+        },
+        {
+          "week_start": "2026-01-19",
+          "role_category": "Data Platform Engineer",
+          "postings": 5
+        },
+        {
+          "week_start": "2026-01-19",
+          "role_category": "Data Scientist",
+          "postings": 17
+        },
+        {
+          "week_start": "2026-01-19",
+          "role_category": "Machine Learning Engineer",
+          "postings": 7
+        },
+        {
+          "week_start": "2026-01-26",
+          "role_category": "AI/LLM Engineer",
+          "postings": 8
+        },
+        {
+          "week_start": "2026-01-26",
+          "role_category": "Analytics Engineer",
+          "postings": 6
+        },
+        {
+          "week_start": "2026-01-26",
+          "role_category": "Business Intelligence Developer",
+          "postings": 10
+        },
+        {
+          "week_start": "2026-01-26",
+          "role_category": "Data Analyst",
+          "postings": 21
+        },
+        {
+          "week_start": "2026-01-26",
+          "role_category": "Data Engineer",
+          "postings": 18
+        },
+        {
+          "week_start": "2026-01-26",
+          "role_category": "Data Platform Engineer",
+          "postings": 4
+        },
+        {
+          "week_start": "2026-01-26",
+          "role_category": "Data Scientist",
+          "postings": 22
+        },
+        {
+          "week_start": "2026-01-26",
+          "role_category": "Machine Learning Engineer",
+          "postings": 14
+        },
+        {
+          "week_start": "2026-02-02",
+          "role_category": "AI/LLM Engineer",
+          "postings": 13
+        },
+        {
+          "week_start": "2026-02-02",
+          "role_category": "Analytics Engineer",
+          "postings": 10
+        },
+        {
+          "week_start": "2026-02-02",
+          "role_category": "Business Intelligence Developer",
+          "postings": 13
+        },
+        {
+          "week_start": "2026-02-02",
+          "role_category": "Data Analyst",
+          "postings": 26
+        },
+        {
+          "week_start": "2026-02-02",
+          "role_category": "Data Engineer",
+          "postings": 29
+        },
+        {
+          "week_start": "2026-02-02",
+          "role_category": "Data Platform Engineer",
+          "postings": 5
+        },
+        {
+          "week_start": "2026-02-02",
+          "role_category": "Data Scientist",
+          "postings": 30
+        },
+        {
+          "week_start": "2026-02-02",
+          "role_category": "Machine Learning Engineer",
+          "postings": 15
+        },
+        {
+          "week_start": "2026-02-09",
+          "role_category": "AI/LLM Engineer",
+          "postings": 12
+        },
+        {
+          "week_start": "2026-02-09",
+          "role_category": "Analytics Engineer",
+          "postings": 7
+        },
+        {
+          "week_start": "2026-02-09",
+          "role_category": "Business Intelligence Developer",
+          "postings": 14
+        },
+        {
+          "week_start": "2026-02-09",
+          "role_category": "Data Analyst",
+          "postings": 40
+        },
+        {
+          "week_start": "2026-02-09",
+          "role_category": "Data Engineer",
+          "postings": 30
+        },
+        {
+          "week_start": "2026-02-09",
+          "role_category": "Data Platform Engineer",
+          "postings": 7
+        },
+        {
+          "week_start": "2026-02-09",
+          "role_category": "Data Scientist",
+          "postings": 29
+        },
+        {
+          "week_start": "2026-02-09",
+          "role_category": "Machine Learning Engineer",
+          "postings": 20
+        },
+        {
+          "week_start": "2026-02-16",
+          "role_category": "AI/LLM Engineer",
+          "postings": 16
+        },
+        {
+          "week_start": "2026-02-16",
+          "role_category": "Analytics Engineer",
+          "postings": 12
+        },
+        {
+          "week_start": "2026-02-16",
+          "role_category": "Business Intelligence Developer",
+          "postings": 21
+        },
+        {
+          "week_start": "2026-02-16",
+          "role_category": "Data Analyst",
+          "postings": 54
+        },
+        {
+          "week_start": "2026-02-16",
+          "role_category": "Data Engineer",
+          "postings": 40
+        },
+        {
+          "week_start": "2026-02-16",
+          "role_category": "Data Platform Engineer",
+          "postings": 16
+        },
+        {
+          "week_start": "2026-02-16",
+          "role_category": "Data Scientist",
+          "postings": 35
+        },
+        {
+          "week_start": "2026-02-16",
+          "role_category": "Machine Learning Engineer",
+          "postings": 31
+        },
+        {
+          "week_start": "2026-02-23",
+          "role_category": "AI/LLM Engineer",
+          "postings": 19
+        },
+        {
+          "week_start": "2026-02-23",
+          "role_category": "Analytics Engineer",
+          "postings": 22
+        },
+        {
+          "week_start": "2026-02-23",
+          "role_category": "Business Intelligence Developer",
+          "postings": 20
+        },
+        {
+          "week_start": "2026-02-23",
+          "role_category": "Data Analyst",
+          "postings": 55
+        },
+        {
+          "week_start": "2026-02-23",
+          "role_category": "Data Engineer",
+          "postings": 40
+        },
+        {
+          "week_start": "2026-02-23",
+          "role_category": "Data Platform Engineer",
+          "postings": 18
+        },
+        {
+          "week_start": "2026-02-23",
+          "role_category": "Data Scientist",
+          "postings": 49
+        },
+        {
+          "week_start": "2026-02-23",
+          "role_category": "Machine Learning Engineer",
+          "postings": 37
+        },
+        {
+          "week_start": "2026-03-02",
+          "role_category": "AI/LLM Engineer",
+          "postings": 25
+        },
+        {
+          "week_start": "2026-03-02",
+          "role_category": "Analytics Engineer",
+          "postings": 26
+        },
+        {
+          "week_start": "2026-03-02",
+          "role_category": "Business Intelligence Developer",
+          "postings": 19
+        },
+        {
+          "week_start": "2026-03-02",
+          "role_category": "Data Analyst",
+          "postings": 60
+        },
+        {
+          "week_start": "2026-03-02",
+          "role_category": "Data Engineer",
+          "postings": 42
+        },
+        {
+          "week_start": "2026-03-02",
+          "role_category": "Data Platform Engineer",
+          "postings": 25
+        },
+        {
+          "week_start": "2026-03-02",
+          "role_category": "Data Scientist",
+          "postings": 64
+        },
+        {
+          "week_start": "2026-03-02",
+          "role_category": "Machine Learning Engineer",
+          "postings": 47
+        },
+        {
+          "week_start": "2026-03-09",
+          "role_category": "AI/LLM Engineer",
+          "postings": 29
+        },
+        {
+          "week_start": "2026-03-09",
+          "role_category": "Analytics Engineer",
+          "postings": 24
+        },
+        {
+          "week_start": "2026-03-09",
+          "role_category": "Business Intelligence Developer",
+          "postings": 29
+        },
+        {
+          "week_start": "2026-03-09",
+          "role_category": "Data Analyst",
+          "postings": 79
+        },
+        {
+          "week_start": "2026-03-09",
+          "role_category": "Data Engineer",
+          "postings": 67
+        },
+        {
+          "week_start": "2026-03-09",
+          "role_category": "Data Platform Engineer",
+          "postings": 25
+        },
+        {
+          "week_start": "2026-03-09",
+          "role_category": "Data Scientist",
+          "postings": 67
+        },
+        {
+          "week_start": "2026-03-09",
+          "role_category": "Machine Learning Engineer",
+          "postings": 46
+        },
+        {
+          "week_start": "2026-03-16",
+          "role_category": "AI/LLM Engineer",
+          "postings": 45
+        },
+        {
+          "week_start": "2026-03-16",
+          "role_category": "Analytics Engineer",
+          "postings": 41
+        },
+        {
+          "week_start": "2026-03-16",
+          "role_category": "Business Intelligence Developer",
+          "postings": 38
+        },
+        {
+          "week_start": "2026-03-16",
+          "role_category": "Data Analyst",
+          "postings": 99
+        },
+        {
+          "week_start": "2026-03-16",
+          "role_category": "Data Engineer",
+          "postings": 77
+        },
+        {
+          "week_start": "2026-03-16",
+          "role_category": "Data Platform Engineer",
+          "postings": 34
+        },
+        {
+          "week_start": "2026-03-16",
+          "role_category": "Data Scientist",
+          "postings": 83
+        },
+        {
+          "week_start": "2026-03-16",
+          "role_category": "Machine Learning Engineer",
+          "postings": 72
+        }
+      ],
+      "weekly_total": [
+        {
+          "week_start": "2025-09-22",
+          "total_postings": 6,
+          "wow_change_pct": NaN
+        },
+        {
+          "week_start": "2025-09-29",
+          "total_postings": 2,
+          "wow_change_pct": -66.66666666666667
+        },
+        {
+          "week_start": "2025-10-06",
+          "total_postings": 1,
+          "wow_change_pct": -50.0
+        },
+        {
+          "week_start": "2025-10-13",
+          "total_postings": 3,
+          "wow_change_pct": 200.0
+        },
+        {
+          "week_start": "2025-10-20",
+          "total_postings": 7,
+          "wow_change_pct": 133.33333333333334
+        },
+        {
+          "week_start": "2025-10-27",
+          "total_postings": 6,
+          "wow_change_pct": -14.28571428571429
+        },
+        {
+          "week_start": "2025-11-03",
+          "total_postings": 8,
+          "wow_change_pct": 33.33333333333333
+        },
+        {
+          "week_start": "2025-11-10",
+          "total_postings": 12,
+          "wow_change_pct": 50.0
+        },
+        {
+          "week_start": "2025-11-17",
+          "total_postings": 5,
+          "wow_change_pct": -58.33333333333333
+        },
+        {
+          "week_start": "2025-11-24",
+          "total_postings": 15,
+          "wow_change_pct": 200.0
+        },
+        {
+          "week_start": "2025-12-01",
+          "total_postings": 32,
+          "wow_change_pct": 113.33333333333333
+        },
+        {
+          "week_start": "2025-12-08",
+          "total_postings": 19,
+          "wow_change_pct": -40.625
+        },
+        {
+          "week_start": "2025-12-15",
+          "total_postings": 27,
+          "wow_change_pct": 42.10526315789473
+        },
+        {
+          "week_start": "2025-12-22",
+          "total_postings": 27,
+          "wow_change_pct": 0.0
+        },
+        {
+          "week_start": "2025-12-29",
+          "total_postings": 41,
+          "wow_change_pct": 51.85185185185186
+        },
+        {
+          "week_start": "2026-01-05",
+          "total_postings": 60,
+          "wow_change_pct": 46.34146341463414
+        },
+        {
+          "week_start": "2026-01-12",
+          "total_postings": 77,
+          "wow_change_pct": 28.333333333333343
+        },
+        {
+          "week_start": "2026-01-19",
+          "total_postings": 88,
+          "wow_change_pct": 14.28571428571428
+        },
+        {
+          "week_start": "2026-01-26",
+          "total_postings": 103,
+          "wow_change_pct": 17.04545454545454
+        },
+        {
+          "week_start": "2026-02-02",
+          "total_postings": 141,
+          "wow_change_pct": 36.893203883495154
+        },
+        {
+          "week_start": "2026-02-09",
+          "total_postings": 159,
+          "wow_change_pct": 12.765957446808507
+        },
+        {
+          "week_start": "2026-02-16",
+          "total_postings": 225,
+          "wow_change_pct": 41.50943396226414
+        },
+        {
+          "week_start": "2026-02-23",
+          "total_postings": 260,
+          "wow_change_pct": 15.555555555555545
+        },
+        {
+          "week_start": "2026-03-02",
+          "total_postings": 308,
+          "wow_change_pct": 18.461538461538463
+        },
+        {
+          "week_start": "2026-03-09",
+          "total_postings": 366,
+          "wow_change_pct": 18.83116883116882
+        },
+        {
+          "week_start": "2026-03-16",
+          "total_postings": 489,
+          "wow_change_pct": 33.606557377049185
+        }
+      ]
+    },
+    "location_salary": {
+      "title": "Median Salary by Location",
+      "insight": "'San Francisco, CA' leads with $205,000 median salary across 391 postings.",
+      "data": [
+        {
+          "location": "San Francisco, CA",
+          "median_salary": 205000.0,
+          "count": 391
+        },
+        {
+          "location": "New York, NY",
+          "median_salary": 195000.0,
+          "count": 367
+        },
+        {
+          "location": "Seattle, WA",
+          "median_salary": 190000.0,
+          "count": 288
+        },
+        {
+          "location": "Boston, MA",
+          "median_salary": 185000.0,
+          "count": 176
+        },
+        {
+          "location": "Los Angeles, CA",
+          "median_salary": 180000.0,
+          "count": 210
+        },
+        {
+          "location": "Washington, DC",
+          "median_salary": 175000.0,
+          "count": 147
+        },
+        {
+          "location": "Chicago, IL",
+          "median_salary": 165000.0,
+          "count": 227
+        },
+        {
+          "location": "Austin, TX",
+          "median_salary": 160000.0,
+          "count": 245
+        },
+        {
+          "location": "Denver, CO",
+          "median_salary": 157500.0,
+          "count": 144
+        },
+        {
+          "location": "Atlanta, GA",
+          "median_salary": 155000.0,
+          "count": 150
+        },
+        {
+          "location": "Miami, FL",
+          "median_salary": 147500.0,
+          "count": 132
+        }
+      ]
+    }
+  }
+}
