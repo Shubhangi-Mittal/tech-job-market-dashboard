@@ -2,10 +2,15 @@
   "version": 2,
   "buildCommand": "echo 'No build needed'",
   "installCommand": "npm install",
+  "outputDirectory": "./",
   "routes": [
     {
       "src": "/data/(.*)",
       "dest": "/data/$1"
+    },
+    {
+      "src": "/templates/(.*)",
+      "dest": "/templates/$1"
     },
     {
       "src": "/(.*)",
