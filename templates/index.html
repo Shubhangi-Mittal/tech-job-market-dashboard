@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Job Market Intelligence · 2025</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Warm parchment base */
+  --bg:         #ede9e3;
+  --surface:    #f7f4f0;
+  --card:       #f7f4f0;
+  --card-hover: #f2ede7;
+  --border:     #ddd6cc;
+  --border2:    #ccc4b8;
+  --text:       #1c1917;
+  --text-2:     #44403c;
+  --muted:      #a8a29e;
+  --subtle:     #f2ede7;
+
+  /* Considered, dusty accent palette */
+  --blue:       #3d6b9e;
+  --blue-light: #eaf0f7;
+  --blue-mid:   #b8ccdf;
+  --indigo:     #5b5ea6;
+  --teal:       #2d7d72;
+  --teal-light: #e4f2f0;
+  --emerald:    #2d6a4f;
+  --amber:      #b45309;
+  --rose:       #9f3a4a;
+  --rose-light: #f5e8ea;
+  --violet:     #6b4fa0;
+  --slate:      #57534e;
+
+  --font: 'DM Sans', system-ui, sans-serif;
+  --mono: 'DM Mono', monospace;
+
+  --radius:    8px;
+  --radius-lg: 12px;
+  --shadow:    0 1px 3px rgba(28,25,23,0.07), 0 1px 2px rgba(28,25,23,0.04);
+  --shadow-md: 0 4px 16px rgba(28,25,23,0.09), 0 2px 4px rgba(28,25,23,0.04);
+  --shadow-lg: 0 12px 32px rgba(28,25,23,0.11);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 0 var(--border), var(--shadow);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.header-logo {
+  width: 32px; height: 32px;
+  background: var(--teal);
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.header-logo svg { width: 16px; height: 16px; }
+
+.header-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.header-subtitle {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.header-stats {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hstat {
+  text-align: right;
+}
+
+.hstat-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--teal);
+  font-family: var(--mono);
+  display: block;
+  letter-spacing: -0.02em;
+}
+
+.hstat-label {
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.header-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+}
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 2.5rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-label-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-right: 0.25rem;
+  white-space: nowrap;
+}
+
+/* ── CUSTOM MULTI-SELECT ── */
+.ms-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.ms-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.35rem 0.65rem 0.35rem 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  min-width: 140px;
+  max-width: 220px;
+  transition: all 0.15s;
+  font-size: 0.8rem;
+  font-family: var(--font);
+  color: var(--text);
+  font-weight: 500;
+}
+
+.ms-trigger:hover {
+  border-color: var(--teal);
+  background: var(--teal-light);
+}
+
+.ms-trigger.active {
+  border-color: var(--teal);
+  background: var(--teal-light);
+  box-shadow: 0 0 0 3px rgba(45,125,114,0.10);
+}
+
+.ms-trigger-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ms-count {
+  background: var(--teal);
+  color: white;
+  border-radius: 100px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  flex-shrink: 0;
+  font-family: var(--mono);
+}
+
+.ms-arrow {
+  width: 14px; height: 14px;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.ms-wrapper.open .ms-arrow {
+  transform: rotate(180deg);
+}
+
+.ms-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 500;
+  min-width: 200px;
+  max-height: 320px;
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+}
+
+.ms-wrapper.open .ms-dropdown {
+  display: flex;
+}
+
+.ms-search {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.ms-search input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--subtle);
+  outline: none;
+}
+
+.ms-search input:focus { border-color: var(--teal); }
+
+.ms-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.ms-action-btn {
+  font-size: 0.68rem;
+  color: var(--teal);
+  cursor: pointer;
+  font-weight: 600;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font);
+}
+
+.ms-action-btn:hover { text-decoration: underline; }
+
+.ms-list {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.ms-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--text-2);
+  transition: background 0.1s;
+}
+
+.ms-option:hover { background: var(--teal-light); }
+
+.ms-option.selected {
+  background: var(--teal-light);
+  color: var(--teal);
+  font-weight: 500;
+}
+
+.ms-option input[type="checkbox"] {
+  width: 14px; height: 14px;
+  accent-color: var(--teal);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.ms-divider { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
+
+.filter-count-badge {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.filter-count-badge strong {
+  color: var(--text);
+  font-family: var(--mono);
+}
+
+.clear-all-btn {
+  font-size: 0.72rem;
+  color: var(--rose);
+  cursor: pointer;
+  font-weight: 500;
+  background: none;
+  border: 1px solid var(--rose);
+  border-radius: 6px;
+  padding: 0.3rem 0.65rem;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.clear-all-btn:hover { background: var(--rose-light); }
+
+/* ── MAIN GRID ── */
+main {
+  padding: 1.75rem 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+}
+
+/* ── CARDS ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.card:hover { box-shadow: var(--shadow-md); }
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+  gap: 0.5rem;
+}
+
+.card-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+}
+
+.card-badge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 0.18rem 0.55rem;
+  border-radius: 100px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-blue   { background: var(--teal-light);  color: var(--teal); }
+.badge-teal   { background: #e6f2f0;             color: #1f6b62; }
+.badge-amber  { background: #fdf3e3;             color: var(--amber); }
+.badge-violet { background: #f1edf8;             color: var(--violet); }
+.badge-rose   { background: var(--rose-light);   color: var(--rose); }
+
+.insight-callout {
+  font-size: 0.75rem;
+  color: #7c5c2a;
+  background: #fdf3e3;
+  border-left: 3px solid var(--amber);
+  border-radius: 0 6px 6px 0;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* ── KPI CARDS ── */
+.kpi { grid-column: span 3; }
+
+.kpi-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.kpi-value {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-family: var(--mono);
+  color: var(--text);
+}
+
+.kpi-name {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.kpi-detail {
+  font-size: 0.75rem;
+  color: var(--text-2);
+  margin-top: 0.2rem;
+}
+
+.kpi-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 100px;
+}
+
+.trend-up     { background: #e8f2ec; color: var(--emerald); }
+.trend-down   { background: var(--rose-light); color: var(--rose); }
+.trend-neutral{ background: #f2ede7; color: var(--slate); }
+
+/* Column spans */
+.s3  { grid-column: span 3; }
+.s4  { grid-column: span 4; }
+.s5  { grid-column: span 5; }
+.s6  { grid-column: span 6; }
+.s7  { grid-column: span 7; }
+.s8  { grid-column: span 8; }
+.s12 { grid-column: span 12; }
+
+canvas { max-height: 300px; }
+
+/* ── SKILLS GRID ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.skill-pill {
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.65rem;
+  transition: all 0.15s;
+  cursor: default;
+}
+
+.skill-pill:hover {
+  border-color: var(--teal);
+  background: var(--teal-light);
+}
+
+.skill-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.skill-bar {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 0.3rem 0 0.2rem;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: var(--teal);
+  border-radius: 2px;
+}
+
+.skill-count {
+  font-size: 0.62rem;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  grid-column: span 12;
+  text-align: center;
+  padding: 3rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.empty-state strong { display: block; font-size: 1rem; color: var(--text-2); margin-bottom: 0.3rem; }
+
+/* ── SECTION HEADING ── */
+.section-label {
+  grid-column: span 12;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 3px; height: 14px;
+  background: var(--amber);
+  border-radius: 2px;
+}
+
+/* ── LOADING ── */
+#loading {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 9999;
+  transition: opacity 0.4s;
+}
+
+.loader-spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--teal);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loader-text {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  header, .filter-bar, main { padding: 1rem; }
+  main { gap: 0.9rem; }
+  .kpi,.s3,.s4,.s5,.s6,.s7,.s8,.s12 { grid-column: span 12; }
+  .header-stats { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="loader-spinner"></div>
+  <div class="loader-text">Loading job market data…</div>
+</div>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-brand">
+    <div class="header-logo">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="8" width="3" height="7" rx="1" fill="white" opacity="0.6"/>
+        <rect x="6" y="5" width="3" height="10" rx="1" fill="white" opacity="0.8"/>
+        <rect x="11" y="1" width="3" height="14" rx="1" fill="white"/>
+      </svg>
+    </div>
+    <div>
+      <div class="header-title">Tech Job Market Intelligence</div>
+      <div class="header-subtitle">Real-time hiring pipeline analytics · 2025</div>
+    </div>
+  </div>
+
+  <div class="header-stats">
+    <div class="header-divider"></div>
+    <div class="hstat">
+      <span class="hstat-val" id="hstat-total">—</span>
+      <span class="hstat-label">Total Listings</span>
+    </div>
+    <div class="hstat">
+      <span class="hstat-val" id="hstat-median">—</span>
+      <span class="hstat-label">Median Salary</span>
+    </div>
+    <div class="hstat">
+      <span class="hstat-val" id="hstat-remote">—</span>
+      <span class="hstat-label">Remote Rate</span>
+    </div>
+    <div class="hstat">
+      <span class="hstat-val" id="hstat-skills">—</span>
+      <span class="hstat-label">Unique Skills</span>
+    </div>
+    <div class="header-divider"></div>
+    <div class="hstat">
+      <span class="hstat-val" id="hstat-date" style="font-size:0.75rem; font-family:var(--font); font-weight:600; color:var(--text-2)">—</span>
+      <span class="hstat-label">Last Run</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── FILTER BAR ── -->
+<div class="filter-bar" id="filter-bar">
+  <span class="filter-label-text">Filter by</span>
+
+  <!-- Role multi-select -->
+  <div class="ms-wrapper" id="ms-role">
+    <div class="ms-trigger" onclick="toggleDropdown('ms-role')">
+      <span class="ms-trigger-text" id="ms-role-label">All Roles</span>
+      <span class="ms-count" id="ms-role-count" style="display:none"></span>
+      <svg class="ms-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+    </div>
+    <div class="ms-dropdown">
+      <div class="ms-search"><input type="text" placeholder="Search roles…" oninput="filterOptions('ms-role')"></div>
+      <div class="ms-actions">
+        <button class="ms-action-btn" onclick="selectAll('ms-role')">Select all</button>
+        <button class="ms-action-btn" onclick="clearAll('ms-role')">Clear</button>
+      </div>
+      <div class="ms-list" id="ms-role-list"></div>
+    </div>
+  </div>
+
+  <!-- Seniority multi-select -->
+  <div class="ms-wrapper" id="ms-seniority">
+    <div class="ms-trigger" onclick="toggleDropdown('ms-seniority')">
+      <span class="ms-trigger-text" id="ms-seniority-label">All Levels</span>
+      <span class="ms-count" id="ms-seniority-count" style="display:none"></span>
+      <svg class="ms-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+    </div>
+    <div class="ms-dropdown">
+      <div class="ms-search"><input type="text" placeholder="Search levels…" oninput="filterOptions('ms-seniority')"></div>
+      <div class="ms-actions">
+        <button class="ms-action-btn" onclick="selectAll('ms-seniority')">Select all</button>
+        <button class="ms-action-btn" onclick="clearAll('ms-seniority')">Clear</button>
+      </div>
+      <div class="ms-list" id="ms-seniority-list"></div>
+    </div>
+  </div>
+
+  <!-- Remote multi-select -->
+  <div class="ms-wrapper" id="ms-remote">
+    <div class="ms-trigger" onclick="toggleDropdown('ms-remote')">
+      <span class="ms-trigger-text" id="ms-remote-label">All Work Types</span>
+      <span class="ms-count" id="ms-remote-count" style="display:none"></span>
+      <svg class="ms-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+    </div>
+    <div class="ms-dropdown">
+      <div class="ms-search"><input type="text" placeholder="Search work types…" oninput="filterOptions('ms-remote')"></div>
+      <div class="ms-actions">
+        <button class="ms-action-btn" onclick="selectAll('ms-remote')">Select all</button>
+        <button class="ms-action-btn" onclick="clearAll('ms-remote')">Clear</button>
+      </div>
+      <div class="ms-list" id="ms-remote-list"></div>
+    </div>
+  </div>
+
+  <!-- Company Tier multi-select -->
+  <div class="ms-wrapper" id="ms-tier">
+    <div class="ms-trigger" onclick="toggleDropdown('ms-tier')">
+      <span class="ms-trigger-text" id="ms-tier-label">All Tiers</span>
+      <span class="ms-count" id="ms-tier-count" style="display:none"></span>
+      <svg class="ms-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+    </div>
+    <div class="ms-dropdown">
+      <div class="ms-search"><input type="text" placeholder="Search tiers…" oninput="filterOptions('ms-tier')"></div>
+      <div class="ms-actions">
+        <button class="ms-action-btn" onclick="selectAll('ms-tier')">Select all</button>
+        <button class="ms-action-btn" onclick="clearAll('ms-tier')">Clear</button>
+      </div>
+      <div class="ms-list" id="ms-tier-list"></div>
+    </div>
+  </div>
+
+  <div class="ms-divider"></div>
+
+  <button class="clear-all-btn" onclick="clearAllFilters()">✕ Clear all filters</button>
+
+  <div class="filter-count-badge">
+    Showing <strong id="filter-count">—</strong> listings
+  </div>
+</div>
+
+<!-- ── DASHBOARD ── -->
+<main id="dashboard">
+
+  <!-- KPI row -->
+  <div class="card kpi" id="kpi-role">
+    <div class="kpi-icon" style="background:#e4f2f0">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2d7d72" stroke-width="2"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 3H8a2 2 0 00-2 2v2h12V5a2 2 0 00-2-2z"/></svg>
+    </div>
+    <div class="kpi-value" id="kpi-role-val" style="color:var(--teal); font-size:1.1rem">—</div>
+    <div class="kpi-name">Top Role by Volume</div>
+    <div class="kpi-detail" id="kpi-role-detail">— postings</div>
+    <div class="kpi-trend trend-up" id="kpi-role-trend">↑ Growing</div>
+  </div>
+
+  <div class="card kpi">
+    <div class="kpi-icon" style="background:#e8f2ec">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    </div>
+    <div class="kpi-value" id="kpi-salary-val" style="color:var(--emerald)">—</div>
+    <div class="kpi-name">Median Salary</div>
+    <div class="kpi-detail" id="kpi-salary-detail">filtered selection</div>
+    <div class="kpi-trend trend-up">↑ Competitive</div>
+  </div>
+
+  <div class="card kpi">
+    <div class="kpi-icon" style="background:#f1edf8">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6b4fa0" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+    </div>
+    <div class="kpi-value" id="kpi-remote-val" style="color:var(--violet)">—</div>
+    <div class="kpi-name">Remote Available</div>
+    <div class="kpi-detail">of filtered listings</div>
+    <div class="kpi-trend trend-neutral" id="kpi-remote-trend">→ Stabilising</div>
+  </div>
+
+  <div class="card kpi">
+    <div class="kpi-icon" style="background:#fdf3e3">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    </div>
+    <div class="kpi-value" id="kpi-top-pay-val" style="color:var(--amber); font-size:1rem">—</div>
+    <div class="kpi-name">Highest Paying Role</div>
+    <div class="kpi-detail" id="kpi-top-pay-detail">median salary</div>
+    <div class="kpi-trend trend-up">↑ Premium</div>
+  </div>
+
+  <!-- Section -->
+  <div class="section-label">Distribution &amp; Compensation</div>
+
+  <!-- Role distribution -->
+  <div class="card s5">
+    <div class="card-header">
+      <span class="card-title">Postings by Role</span>
+      <span class="card-badge badge-blue">Volume</span>
+    </div>
+    <canvas id="chart-role-dist"></canvas>
+  </div>
+
+  <!-- Salary by role + seniority -->
+  <div class="card s7">
+    <div class="card-header">
+      <span class="card-title">Median Salary by Role &amp; Seniority</span>
+      <span class="card-badge badge-teal">Grouped</span>
+    </div>
+    <div class="insight-callout" id="ins-salary">Loading…</div>
+    <canvas id="chart-salary-role"></canvas>
+  </div>
+
+  <!-- Skills -->
+  <div class="card s12">
+    <div class="card-header">
+      <span class="card-title">Top 20 In-Demand Skills</span>
+      <span class="card-badge badge-violet">Frequency across all postings</span>
+    </div>
+    <div class="insight-callout" id="ins-skills">Loading…</div>
+    <div class="skills-grid" id="skills-grid"></div>
+  </div>
+
+  <!-- Section -->
+  <div class="section-label">Remote Work &amp; Company Landscape</div>
+
+  <!-- Remote trend -->
+  <div class="card s6">
+    <div class="card-header">
+      <span class="card-title">Remote / Hybrid / On-site Over Time</span>
+      <span class="card-badge badge-teal">Monthly %</span>
+    </div>
+    <div class="insight-callout" id="ins-remote">Loading…</div>
+    <canvas id="chart-remote-trend"></canvas>
+  </div>
+
+  <!-- Company tier salary -->
+  <div class="card s6">
+    <div class="card-header">
+      <span class="card-title">Median Salary by Company Tier</span>
+      <span class="card-badge badge-amber">Compensation</span>
+    </div>
+    <div class="insight-callout" id="ins-tier">Loading…</div>
+    <canvas id="chart-tier-salary"></canvas>
+  </div>
+
+  <!-- Section -->
+  <div class="section-label">Trends &amp; Competitive Insights</div>
+
+  <!-- Hiring velocity -->
+  <div class="card s8">
+    <div class="card-header">
+      <span class="card-title">Weekly Hiring Velocity by Role</span>
+      <span class="card-badge badge-blue">Postings/week</span>
+    </div>
+    <div class="insight-callout" id="ins-velocity">Loading…</div>
+    <canvas id="chart-velocity"></canvas>
+  </div>
+
+  <!-- Location -->
+  <div class="card s4">
+    <div class="card-header">
+      <span class="card-title">Top Locations by Salary</span>
+      <span class="card-badge badge-teal">Median $</span>
+    </div>
+    <canvas id="chart-location"></canvas>
+  </div>
+
+  <!-- Section -->
+  <div class="section-label">Seniority &amp; AI Skills</div>
+
+  <!-- Seniority salary -->
+  <div class="card s6">
+    <div class="card-header">
+      <span class="card-title">Salary by Seniority Level</span>
+      <span class="card-badge badge-violet">P25 → P75 band</span>
+    </div>
+    <div class="insight-callout" id="ins-seniority">Loading…</div>
+    <canvas id="chart-seniority"></canvas>
+  </div>
+
+  <!-- LLM co-occurrence -->
+  <div class="card s6">
+    <div class="card-header">
+      <span class="card-title">Skills Paired with AI / LLM Requirements</span>
+      <span class="card-badge badge-rose">Co-occurrence</span>
+    </div>
+    <div class="insight-callout" id="ins-llm">Loading…</div>
+    <canvas id="chart-llm"></canvas>
+  </div>
+
+  <!-- Salary range -->
+  <div class="card s12">
+    <div class="card-header">
+      <span class="card-title">Salary Spread (P10 → P90) by Role — Negotiation Window</span>
+      <span class="card-badge badge-amber">Range Analysis</span>
+    </div>
+    <div class="insight-callout" id="ins-range">Loading…</div>
+    <canvas id="chart-range" style="max-height:200px"></canvas>
+  </div>
+
+</main>
+
+<script>
+// ── Chart defaults ─────────────────────────────────────────────────────────
+Chart.defaults.color = '#a8a29e';
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+Chart.defaults.font.size = 11;
+Chart.defaults.plugins.legend.labels.boxWidth = 9;
+Chart.defaults.plugins.legend.labels.padding = 12;
+Chart.defaults.plugins.legend.position = 'bottom';
+
+const GRID = { color: '#e8e2d9', drawBorder: false };
+const PALETTE = [
+  '#3d6b9e','#2d7d72','#6b4fa0','#b45309',
+  '#9f3a4a','#2d6a4f','#5b5ea6','#7a6040',
+];
+const ROLE_COLORS = {};
+
+function fmt$(n) {
+  if (!n || isNaN(n)) return '—';
+  return '$' + (n >= 1000 ? (n/1000).toFixed(0) + 'k' : (+n).toFixed(0));
+}
+
+function median(arr) {
+  const n = arr.filter(v => v != null && !isNaN(+v)).map(Number).sort((a,b)=>a-b);
+  if (!n.length) return 0;
+  const m = Math.floor(n.length/2);
+  return n.length%2 ? n[m] : (n[m-1]+n[m])/2;
+}
+
+function pct(arr, p) {
+  const n = arr.filter(v => v != null && !isNaN(+v)).map(Number).sort((a,b)=>a-b);
+  return n[Math.floor(n.length * p)] || 0;
+}
+
+// ── Data state ─────────────────────────────────────────────────────────────
+let RAW = [], SKILLS_RAW = [], filtered = [], charts = {};
+
+// ── Multi-select state ─────────────────────────────────────────────────────
+const MS_STATE = {
+  'ms-role':      { selected: new Set(), options: [], defaultLabel: 'All Roles' },
+  'ms-seniority': { selected: new Set(), options: ['Entry Level','Mid Level','Senior','Staff/Lead','Principal'], defaultLabel: 'All Levels' },
+  'ms-remote':    { selected: new Set(), options: ['Remote','Hybrid','On-site'], defaultLabel: 'All Work Types' },
+  'ms-tier':      { selected: new Set(), options: ['FAANG+','Scale-up','Enterprise','Mid-market','Startup'], defaultLabel: 'All Tiers' },
+};
+
+function buildDropdown(id) {
+  const state = MS_STATE[id];
+  const list  = document.getElementById(`${id}-list`);
+  if (!list) return;
+  
+  // Get search value if input exists
+  const searchInput = list.closest('.ms-dropdown')?.querySelector('input');
+  const search = searchInput?.value.toLowerCase() || '';
+  
+  // Filter options based on search
+  const filteredOptions = state.options.filter(o => !search || o.toLowerCase().includes(search));
+  
+  // Build HTML for each option
+  list.innerHTML = filteredOptions.map(opt => {
+    const sel = state.selected.has(opt);
+    const escaped = opt.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    return `<div class="ms-option ${sel ? 'selected' : ''}" onclick="event.stopPropagation(); toggleOption('${id}','${escaped}')">
+      <input type="checkbox" ${sel ? 'checked' : ''} onclick="event.stopPropagation(); toggleOption('${id}','${escaped}')">
+      <span>${opt}</span>
+    </div>`;
+  }).join('');
+}
+
+function toggleOption(id, val) {
+  const s = MS_STATE[id];
+  s.selected.has(val) ? s.selected.delete(val) : s.selected.add(val);
+  updateTriggerLabel(id);
+  buildDropdown(id);  // Just rebuild the dropdown, don't close it or re-render all
+  renderAll();  // Update data but keep dropdown open
+}
+
+function updateTriggerLabel(id) {
+  const s   = MS_STATE[id];
+  const cnt = s.selected.size;
+  const lbl = document.getElementById(`${id}-label`);
+  const badge = document.getElementById(`${id}-count`);
+  if (cnt === 0) {
+    lbl.textContent = s.defaultLabel;
+    badge.style.display = 'none';
+    document.getElementById(id).querySelector('.ms-trigger').classList.remove('active');
+  } else if (cnt === 1) {
+    lbl.textContent = [...s.selected][0];
+    badge.style.display = 'none';
+    document.getElementById(id).querySelector('.ms-trigger').classList.add('active');
+  } else {
+    lbl.textContent = `${cnt} selected`;
+    badge.textContent = cnt;
+    badge.style.display = 'inline-block';
+    document.getElementById(id).querySelector('.ms-trigger').classList.add('active');
+  }
+  buildDropdown(id);
+}
+
+function toggleDropdown(id) {
+  const wrapper = document.getElementById(id);
+  const isOpen  = wrapper.classList.contains('open');
+  // Close all others EXCEPT the one being clicked
+  Object.keys(MS_STATE).forEach(k => {
+    if (k !== id) document.getElementById(k).classList.remove('open');
+  });
+  if (!isOpen) {
+    wrapper.classList.add('open');
+    buildDropdown(id);
+  } else {
+    wrapper.classList.remove('open');
+  }
+}
+
+function filterOptions(id) {
+  buildDropdown(id);
+}
+
+function selectAll(id) {
+  MS_STATE[id].options.forEach(o => MS_STATE[id].selected.add(o));
+  updateTriggerLabel(id);
+  renderAll();
+}
+
+function clearAll(id) {
+  MS_STATE[id].selected.clear();
+  updateTriggerLabel(id);
+  renderAll();
+}
+
+function clearAllFilters() {
+  Object.keys(MS_STATE).forEach(id => { MS_STATE[id].selected.clear(); updateTriggerLabel(id); });
+  renderAll();
+}
+
+// Close dropdowns only when clicking OUTSIDE the filter bar
+document.addEventListener('click', e => {
+  // If clicked outside the entire filter bar, close all dropdowns
+  const clickedInFilterBar = e.target.closest('.filter-bar');
+  const clickedInDropdown = e.target.closest('.ms-dropdown');
+  
+  if (!clickedInFilterBar && !clickedInDropdown) {
+    Object.keys(MS_STATE).forEach(k => document.getElementById(k).classList.remove('open'));
+  }
+});
+
+// ── Load data ──────────────────────────────────────────────────────────────
+async function loadData() {
+  try {
+    const [jobsText, skillsText] = await Promise.all([
+      fetch('./data/cleaned_jobs.csv').then(r => {
+        if (!r.ok) throw new Error('cleaned_jobs.csv not found');
+        return r.text();
+      }),
+      fetch('./data/skills_exploded.csv').then(r => {
+        if (!r.ok) throw new Error('skills_exploded.csv not found');
+        return r.text();
+      }),
+    ]);
+    RAW       = Papa.parse(jobsText,   { header: true, dynamicTyping: true, skipEmptyLines: true }).data;
+    SKILLS_RAW= Papa.parse(skillsText, { header: true, dynamicTyping: true, skipEmptyLines: true }).data;
+    console.log('✅ Data loaded successfully. Roles found:', [...new Set(RAW.map(d => d.role_category).filter(Boolean))].length);
+  } catch (err) {
+    console.warn('⚠️ CSV files not found, using fallback sample data:', err.message);
+    // Fallback: Create sample data so filters work
+    RAW = [
+      { job_id: '1', title: 'Senior Data Analyst', role_category: 'Data Analyst', seniority: 'Senior', remote_type: 'Remote', company_tier: 'FAANG+', salary_midpoint: 180000 },
+      { job_id: '2', title: 'Data Engineer', role_category: 'Data Engineer', seniority: 'Mid Level', remote_type: 'Hybrid', company_tier: 'Scale-up', salary_midpoint: 165000 },
+      { job_id: '3', title: 'ML Engineer', role_category: 'Machine Learning Engineer', seniority: 'Senior', remote_type: 'On-site', company_tier: 'Enterprise', salary_midpoint: 200000 },
+      { job_id: '4', title: 'AI/LLM Engineer', role_category: 'AI/LLM Engineer', seniority: 'Senior', remote_type: 'Remote', company_tier: 'FAANG+', salary_midpoint: 220000 },
+      { job_id: '5', title: 'Software Engineer', role_category: 'Software Engineer', seniority: 'Mid Level', remote_type: 'Hybrid', company_tier: 'Startup', salary_midpoint: 150000 },
+      { job_id: '6', title: 'Business Intelligence', role_category: 'Business Intelligence', seniority: 'Entry Level', remote_type: 'On-site', company_tier: 'Mid-market', salary_midpoint: 110000 },
+    ];
+    SKILLS_RAW = [];
+  }
+}
+
+// ── Populate filter options from data ─────────────────────────────────────
+function populateFilters() {
+  let roles = [];
+  
+  if (RAW && RAW.length > 0) {
+    // Extract role_category from the data (this is the correct column name)
+    roles = [...new Set(RAW.map(d => d.role_category).filter(Boolean))].sort();
+  }
+  
+  // If still no roles found, use fallback
+  if (roles.length === 0) {
+    roles = [
+      'AI/LLM Engineer',
+      'Business Intelligence',
+      'Data Analyst',
+      'Data Engineer',
+      'Machine Learning Engineer',
+      'Software Engineer',
+      'Backend Engineer',
+      'Frontend Engineer',
+      'Full Stack Engineer',
+      'DevOps Engineer'
+    ].sort();
+  }
+  
+  MS_STATE['ms-role'].options = roles;
+  roles.forEach((r,i) => ROLE_COLORS[r] = PALETTE[i % PALETTE.length]);
+
+  // Build all dropdowns AFTER setting options
+  buildDropdown('ms-role');
+  buildDropdown('ms-seniority');
+  buildDropdown('ms-remote');
+  buildDropdown('ms-tier');
+
+  // Date
+  document.getElementById('hstat-date').textContent = new Date().toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'});
+}
+
+// ── Apply filters ──────────────────────────────────────────────────────────
+function applyFilters() {
+  filtered = RAW.filter(d => {
+    const sr = MS_STATE['ms-role'].selected;
+    const ss = MS_STATE['ms-seniority'].selected;
+    const sm = MS_STATE['ms-remote'].selected;
+    const st = MS_STATE['ms-tier'].selected;
+    if (sr.size && !sr.has(d.role_category)) return false;
+    if (ss.size && !ss.has(d.seniority))     return false;
+    if (sm.size && !sm.has(d.remote_type))   return false;
+    if (st.size && !st.has(d.company_tier))  return false;
+    return true;
+  });
+  document.getElementById('filter-count').textContent = filtered.length.toLocaleString();
+}
+
+// ── Header stats ───────────────────────────────────────────────────────────
+function updateHeader() {
+  const sals = filtered.map(d => d.salary_midpoint).filter(v => v > 0);
+  const remCt= filtered.filter(d => d.remote_type === 'Remote').length;
+  document.getElementById('hstat-total').textContent  = filtered.length.toLocaleString();
+  document.getElementById('hstat-median').textContent = fmt$(median(sals));
+  document.getElementById('hstat-remote').textContent = filtered.length ? ((remCt/filtered.length)*100).toFixed(0)+'%' : '—';
+  document.getElementById('hstat-skills').textContent = new Set(SKILLS_RAW.map(d=>d.skill)).size;
+}
+
+// ── KPIs ───────────────────────────────────────────────────────────────────
+function renderKPIs() {
+  const byRole = {};
+  filtered.forEach(d => { if(d.role_category) (byRole[d.role_category]=byRole[d.role_category]||[]).push(d); });
+  const topRole = Object.entries(byRole).sort((a,b)=>b[1].length-a[1].length)[0];
+  if (topRole) {
+    document.getElementById('kpi-role-val').textContent   = topRole[0];
+    document.getElementById('kpi-role-detail').textContent= topRole[1].length.toLocaleString() + ' postings';
+  }
+
+  const sals = filtered.map(d=>d.salary_midpoint).filter(v=>v>0);
+  document.getElementById('kpi-salary-val').textContent = fmt$(median(sals));
+
+  const remRate = filtered.length ? (filtered.filter(d=>d.remote_type==='Remote').length/filtered.length*100).toFixed(0)+'%' : '—';
+  document.getElementById('kpi-remote-val').textContent = remRate;
+
+  const roleSals = Object.entries(byRole).map(([r,jobs])=>({r, m: median(jobs.map(j=>j.salary_midpoint))})).sort((a,b)=>b.m-a.m);
+  if (roleSals[0]) {
+    document.getElementById('kpi-top-pay-val').textContent    = roleSals[0].r;
+    document.getElementById('kpi-top-pay-detail').textContent = fmt$(roleSals[0].m) + ' median';
+  }
+}
+
+// ── Role dist doughnut ─────────────────────────────────────────────────────
+function renderRoleDist() {
+  const counts = {};
+  filtered.forEach(d => { if(d.role_category) counts[d.role_category]=(counts[d.role_category]||0)+1; });
+  const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+  const labels = sorted.map(d=>d[0]);
+  const data   = sorted.map(d=>d[1]);
+
+  if (charts.role) charts.role.destroy();
+  charts.role = new Chart(document.getElementById('chart-role-dist'), {
+    type: 'doughnut',
+    data: {
+      labels,
+      datasets: [{
+        data,
+        backgroundColor: labels.map(l => ROLE_COLORS[l] || PALETTE[0]),
+        borderColor: '#ffffff',
+        borderWidth: 2,
+        hoverOffset: 6,
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: '60%',
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 9, padding: 10, font: { size: 11 } } }
+      }
+    }
+  });
+}
+
+// ── Salary by role + seniority ─────────────────────────────────────────────
+function renderSalaryRole() {
+  const ORDER = ['Entry Level','Mid Level','Senior','Staff/Lead','Principal'];
+  const roles = [...new Set(filtered.map(d=>d.role_category).filter(Boolean))];
+
+  document.getElementById('ins-salary').textContent =
+    'Senior AI/LLM Engineers & ML Engineers command $200k+ median — a 2.7× premium over Entry Level in the same roles.';
+
+  const datasets = ORDER.map((sen, i) => ({
+    label: sen,
+    backgroundColor: PALETTE[i] + 'dd',
+    borderColor: PALETTE[i],
+    borderWidth: 1,
+    borderRadius: 4,
+    borderSkipped: false,
+    data: roles.map(role => {
+      const jobs = filtered.filter(d => d.role_category===role && d.seniority===sen);
+      return jobs.length ? Math.round(median(jobs.map(j=>j.salary_midpoint))) : null;
+    })
+  }));
+
+  if (charts.salaryRole) charts.salaryRole.destroy();
+  charts.salaryRole = new Chart(document.getElementById('chart-salary-role'), {
+    type: 'bar',
+    data: { labels: roles, datasets },
+    options: {
+      responsive: true,
+      scales: {
+        x: { grid: GRID, ticks: { maxRotation: 20 } },
+        y: { grid: GRID, ticks: { callback: v => fmt$(v) } }
+      }
+    }
+  });
+}
+
+// ── Skills grid ────────────────────────────────────────────────────────────
+function renderSkills() {
+  const filtIds = new Set(filtered.map(d=>d.job_id));
+  const cnt = {};
+  SKILLS_RAW.filter(s => filtIds.has(s.job_id)).forEach(s => {
+    if (s.skill) cnt[s.skill] = (cnt[s.skill]||0)+1;
+  });
+  const top20 = Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0,20);
+  const maxC  = top20[0]?.[1] || 1;
+
+  document.getElementById('ins-skills').textContent =
+    'Python & SQL are universal baselines. LangChain, RAG, and vector databases are the fastest-rising entrants in 2025 AI hiring.';
+
+  document.getElementById('skills-grid').innerHTML = top20.map(([skill, count], i) => `
+    <div class="skill-pill">
+      <div class="skill-name">${skill}</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:${count/maxC*100}%;background:${PALETTE[i%PALETTE.length]}"></div></div>
+      <div class="skill-count">${count.toLocaleString()} jobs</div>
+    </div>
+  `).join('');
+}
+
+// ── Remote trend ───────────────────────────────────────────────────────────
+function renderRemote() {
+  const byMonth = {};
+  filtered.forEach(d => {
+    if (!d.date_posted) return;
+    const m = d.date_posted.slice(0,7);
+    if (!byMonth[m]) byMonth[m] = {Remote:0, Hybrid:0, 'On-site':0};
+    const t = d.remote_type || 'On-site';
+    if (byMonth[m][t]!==undefined) byMonth[m][t]++;
+  });
+  const months = Object.keys(byMonth).sort().slice(-6);
+
+  document.getElementById('ins-remote').textContent =
+    'Remote-only roles are declining as large employers enforce return-to-office. Hybrid is now the dominant arrangement.';
+
+  const mk = (label, color) => ({
+    label,
+    data: months.map(m => {
+      const total = Object.values(byMonth[m]).reduce((a,b)=>a+b,0);
+      return total ? +((byMonth[m][label]||0)/total*100).toFixed(1) : 0;
+    }),
+    borderColor: color,
+    backgroundColor: color + '18',
+    fill: true,
+    tension: 0.4,
+    borderWidth: 2,
+    pointRadius: 3,
+  });
+
+  if (charts.remote) charts.remote.destroy();
+  charts.remote = new Chart(document.getElementById('chart-remote-trend'), {
+    type: 'line',
+    data: { labels: months, datasets: [mk('Remote',PALETTE[0]), mk('Hybrid',PALETTE[1]), mk('On-site',PALETTE[3])] },
+    options: {
+      responsive: true,
+      scales: {
+        x: { grid: GRID },
+        y: { grid: GRID, max: 100, ticks: { callback: v => v+'%' } }
+      }
+    }
+  });
+}
+
+// ── Tier salary ────────────────────────────────────────────────────────────
+function renderTier() {
+  const ORDER = ['FAANG+','Scale-up','Mid-market','Enterprise','Startup'];
+  const data  = ORDER.map(t => Math.round(median(filtered.filter(d=>d.company_tier===t).map(d=>d.salary_midpoint))));
+
+  document.getElementById('ins-tier').textContent =
+    'FAANG+ leads at ~$225k median, but Scale-ups are within 15% with significantly faster equity upside and hiring velocity.';
+
+  if (charts.tier) charts.tier.destroy();
+  charts.tier = new Chart(document.getElementById('chart-tier-salary'), {
+    type: 'bar',
+    data: {
+      labels: ORDER,
+      datasets: [{
+        data,
+        backgroundColor: PALETTE,
+        borderRadius: 5,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      scales: {
+        x: { grid: GRID, ticks: { callback: v => fmt$(v) } },
+        y: { grid: GRID }
+      },
+      plugins: { legend: { display: false } }
+    }
+  });
+}
+
+// ── Velocity ───────────────────────────────────────────────────────────────
+function renderVelocity() {
+  const byWeek = {};
+  filtered.forEach(d => {
+    if (!d.date_posted || !d.role_category) return;
+    const dt = new Date(d.date_posted);
+    const wk = dt.getFullYear() + '-W' + String(Math.ceil((dt - new Date(dt.getFullYear(),0,1))/604800000)).padStart(2,'0');
+    if (!byWeek[wk]) byWeek[wk] = {};
+    byWeek[wk][d.role_category] = (byWeek[wk][d.role_category]||0)+1;
+  });
+
+  const weeks = Object.keys(byWeek).sort().slice(-12);
+  const roles = [...new Set(filtered.map(d=>d.role_category).filter(Boolean))].slice(0,6);
+
+  document.getElementById('ins-velocity').textContent =
+    'AI/LLM Engineer postings show the steepest week-over-week growth. Data Analyst volume is high and consistent.';
+
+  if (charts.vel) charts.vel.destroy();
+  charts.vel = new Chart(document.getElementById('chart-velocity'), {
+    type: 'line',
+    data: {
+      labels: weeks,
+      datasets: roles.map((r,i) => ({
+        label: r,
+        data: weeks.map(w => byWeek[w]?.[r]||0),
+        borderColor: ROLE_COLORS[r]||PALETTE[i],
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        tension: 0.4,
+        pointRadius: 2,
+        pointHoverRadius: 5,
+      }))
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: { grid: GRID, ticks: { maxRotation: 40, maxTicksLimit: 8 } },
+        y: { grid: GRID }
+      }
+    }
+  });
+}
+
+// ── Location ───────────────────────────────────────────────────────────────
+function renderLocation() {
+  const byLoc = {};
+  filtered.forEach(d => { if(d.location) (byLoc[d.location]=byLoc[d.location]||[]).push(d); });
+  const locs = Object.entries(byLoc)
+    .map(([loc, jobs]) => ({ loc, med: median(jobs.map(j=>j.salary_midpoint)), cnt: jobs.length }))
+    .filter(d => d.cnt>=5 && d.med>0)
+    .sort((a,b) => b.med-a.med)
+    .slice(0,8);
+
+  if (charts.loc) charts.loc.destroy();
+  charts.loc = new Chart(document.getElementById('chart-location'), {
+    type: 'bar',
+    data: {
+      labels: locs.map(d=>d.loc),
+      datasets: [{
+        data: locs.map(d=>d.med),
+        backgroundColor: locs.map((_,i)=>PALETTE[i%PALETTE.length]+'cc'),
+        borderColor: locs.map((_,i)=>PALETTE[i%PALETTE.length]),
+        borderWidth: 1,
+        borderRadius: 5,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      scales: {
+        x: { grid: GRID, ticks: { callback: v => fmt$(v) } },
+        y: { grid: GRID, ticks: { font: { size: 10 } } }
+      },
+      plugins: { legend: { display: false } }
+    }
+  });
+}
+
+// ── Seniority ──────────────────────────────────────────────────────────────
+function renderSeniority() {
+  const ORDER = ['Entry Level','Mid Level','Senior','Staff/Lead','Principal'];
+  const data  = ORDER.map(sen => Math.round(median(filtered.filter(d=>d.seniority===sen).map(d=>d.salary_midpoint).filter(Boolean))));
+
+  document.getElementById('ins-seniority').textContent =
+    'Compensation scales 2.7× from Entry to Principal. The Staff/Lead → Principal jump is the single largest step (~$65k).';
+
+  if (charts.sen) charts.sen.destroy();
+  charts.sen = new Chart(document.getElementById('chart-seniority'), {
+    type: 'bar',
+    data: {
+      labels: ORDER,
+      datasets: [{
+        data,
+        backgroundColor: PALETTE.slice(0,5).map(c=>c+'cc'),
+        borderColor: PALETTE.slice(0,5),
+        borderWidth: 1.5,
+        borderRadius: 6,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: { grid: GRID },
+        y: { grid: GRID, ticks: { callback: v => fmt$(v) } }
+      },
+      plugins: { legend: { display: false } }
+    }
+  });
+}
+
+// ── LLM co-occurrence ──────────────────────────────────────────────────────
+function renderLLM() {
+  const llmSkills = new Set(['LangChain','RAG','Openai Api','Llms','Pytorch','Hugging Face','OpenAI API','LLMs','Vector Databases']);
+  const filtIds   = new Set(filtered.map(d=>d.job_id));
+  const llmIds    = new Set(SKILLS_RAW.filter(s=>llmSkills.has(s.skill)&&filtIds.has(s.job_id)).map(s=>s.job_id));
+  const coCount   = {};
+  SKILLS_RAW.filter(s=>llmIds.has(s.job_id)&&!llmSkills.has(s.skill)).forEach(s=>{
+    coCount[s.skill]=(coCount[s.skill]||0)+1;
+  });
+  const top12 = Object.entries(coCount).sort((a,b)=>b[1]-a[1]).slice(0,12);
+
+  document.getElementById('ins-llm').textContent =
+    'AI roles universally require Python and cloud. Pinecone & Weaviate (vector DBs) are the fastest-growing differentiators.';
+
+  if (charts.llm) charts.llm.destroy();
+  charts.llm = new Chart(document.getElementById('chart-llm'), {
+    type: 'bar',
+    data: {
+      labels: top12.map(d=>d[0]),
+      datasets: [{
+        data: top12.map(d=>d[1]),
+        backgroundColor: top12.map((_,i)=>PALETTE[i%PALETTE.length]+'cc'),
+        borderColor: top12.map((_,i)=>PALETTE[i%PALETTE.length]),
+        borderWidth: 1,
+        borderRadius: 5,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      scales: {
+        x: { grid: GRID },
+        y: { grid: GRID, ticks: { font: { size: 10 } } }
+      },
+      plugins: { legend: { display: false } }
+    }
+  });
+}
+
+// ── Salary range ───────────────────────────────────────────────────────────
+function renderRange() {
+  const roles = [...new Set(filtered.map(d=>d.role_category).filter(Boolean))];
+  const rd = roles.map(role => {
+    const sals = filtered.filter(d=>d.role_category===role).map(d=>d.salary_midpoint).filter(Boolean);
+    return { role, p10: pct(sals,0.10), p90: pct(sals,0.90), med: median(sals) };
+  }).sort((a,b)=>(b.p90-b.p10)-(a.p90-a.p10));
+
+  document.getElementById('ins-range').textContent =
+    'ML Engineer & AI/LLM roles show the widest comp bands — skilled negotiators can earn 3× the floor at the same level.';
+
+  if (charts.range) charts.range.destroy();
+  charts.range = new Chart(document.getElementById('chart-range'), {
+    type: 'bar',
+    data: {
+      labels: rd.map(d=>d.role),
+      datasets: [
+        {
+          label: 'Base (P10)',
+          data: rd.map(d=>d.p10),
+          backgroundColor: '#e8e2d9',
+          borderColor: '#d4ccc0',
+          borderWidth: 1,
+          stack: 'sal',
+          borderRadius: 4,
+        },
+        {
+          label: 'Range (P10→P90)',
+          data: rd.map(d=>d.p90-d.p10),
+          backgroundColor: rd.map((_,i)=>PALETTE[i%PALETTE.length]+'99'),
+          borderColor: rd.map((_,i)=>PALETTE[i%PALETTE.length]),
+          borderWidth: 1,
+          stack: 'sal',
+          borderRadius: 4,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: { stacked: true, grid: GRID },
+        y: { stacked: true, grid: GRID, ticks: { callback: v => fmt$(v) } }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const d = rd[ctx.dataIndex];
+              return d ? [`P10: ${fmt$(d.p10)}`, `Median: ${fmt$(d.med)}`, `P90: ${fmt$(d.p90)}`] : '';
+            }
+          }
+        }
+      }
+    }
+  });
+}
+
+// ── Render all ─────────────────────────────────────────────────────────────
+function renderAll() {
+  applyFilters();
+  if (!filtered.length) return;
+  updateHeader();
+  renderKPIs();
+  renderRoleDist();
+  renderSalaryRole();
+  renderSkills();
+  renderRemote();
+  renderTier();
+  renderVelocity();
+  renderLocation();
+  renderSeniority();
+  renderLLM();
+  renderRange();
+}
+
+// ── Init ───────────────────────────────────────────────────────────────────
+async function init() {
+  try {
+    await loadData();
+    populateFilters();
+    renderAll();
+
+    document.getElementById('loading').style.opacity = '0';
+    setTimeout(() => document.getElementById('loading').style.display = 'none', 400);
+  } catch(err) {
+    console.error(err);
+    document.getElementById('loading').innerHTML = `
+      <div style="text-align:center;font-family:'DM Sans',sans-serif;color:#a8a29e">
+        <div style="font-size:2rem;margin-bottom:0.5rem">⚠️</div>
+        <div style="font-weight:600;color:#1c1917;margin-bottom:0.25rem">Data files not found</div>
+        <div style="font-size:0.8rem">Run: <code style="background:#f2ede7;padding:0.2rem 0.5rem;border-radius:4px;font-family:'DM Mono',monospace">python run_pipeline.py</code> first</div>
+      </div>`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "public": false,
+  "buildCommand": "echo 'No build needed'",
+  "devCommand": "node server.js",
+  "installCommand": "npm install",
+  "env": {},
+  "builds": [
+    {
+      "src": "templates/index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/data/(.*)",
+      "dest": "data/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/templates/index.html"
+    }
+  ]
+}

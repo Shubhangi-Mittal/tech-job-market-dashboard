@@ -1,0 +1,12 @@
+{
+  "name": "tech-job-market-dashboard",
+  "version": "1.0.0",
+  "description": "Tech Job Market Intelligence Dashboard",
+  "scripts": {
+    "dev": "node -e \"require('http').createServer((req, res) => { const fs = require('fs'); if (req.url === '/') { res.writeHead(200); res.end(fs.readFileSync('./templates/index.html')); } else if (req.url.startsWith('/data/')) { const file = req.url.replace('/data/', './data/'); res.writeHead(200); res.end(fs.readFileSync(file)); } else { res.writeHead(404); res.end('Not found'); } }).listen(3000); \"",
+    "build": "echo 'No build needed'"
+  },
+  "keywords": ["tech", "jobs", "market", "analytics", "dashboard"],
+  "author": "",
+  "license": "MIT"
+}
